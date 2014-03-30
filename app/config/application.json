@@ -1,0 +1,7 @@
+{
+    "display_errors": true,
+
+	"document_root": "/",
+
+    "default_timezone": "America/New_York"
+}

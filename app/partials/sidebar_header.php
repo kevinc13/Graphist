@@ -1,0 +1,1 @@
+<h1><a href="<?php echo DOCUMENT_ROOT;?>console">Console</a></h1>

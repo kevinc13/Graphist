@@ -1,0 +1,27 @@
+DirectoryIndex public/index.php
+
+<IfModule mod_rewrite.c>
+
+Options All -Indexes
+
+RewriteEngine on
+
+RewriteBase /
+
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+
+RewriteRule ^(.*)$ public/index.php/$1 [QSA,L]
+	
+</IfModule>
+
+<IfModule mod_deflate.c>
+	SetOutputFilter DEFLATE
+    SetEnvIfNoCase Request_URI  \
+        \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+    SetEnvIfNoCase Request_URI  \
+        \.(?:exe|t?gz|zip|gz2|sit|rar)$ no-gzip dont-vary
+</IfModule>

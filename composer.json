@@ -1,0 +1,14 @@
+{
+	"require": {
+		"everyman/neo4jphp":"dev-master",
+		"monolog/monolog": "~1.7"
+	},
+
+	"require-dev": {
+		"codeception/codeception": "dev-master"
+	},
+
+	"config": {
+		"process-timeout": 600
+	}
+}
