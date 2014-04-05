@@ -13,6 +13,7 @@
 		<?php View::insert("sidebar_header");?>
 		<ul>
 			<li>
+				<a href="<?php echo DOCUMENT_ROOT;?>console/connections">Connections</a>
 				<a href="<?php echo DOCUMENT_ROOT;?>console/migrator">Migration Tool</a>
 			</li>
 		</ul>

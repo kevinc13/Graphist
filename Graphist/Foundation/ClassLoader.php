@@ -27,11 +27,16 @@ class ClassLoader {
 		$class = static::normalizeClass($class);
 		
 		if (file_exists($class)) {
-		
     		require_once $class;
-    		
-    		return true;
+		} else {
+			foreach (static::$directories as $directory) {
+				if (file_exists($path = $directory . "/" . $class)) {
+					require_once $path;
+				}
+			}
 		}
+
+		return true;
 	}
 
 	/**

@@ -16,7 +16,7 @@ body {
 	font-family: "Helvetica Neue", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	
-	color: #333;
+	color: #555;
 }
 
 img { background: no-repeat center center fixed; }
@@ -252,6 +252,19 @@ select {
 	color: white;
 }
 
+.message {
+	padding: 15px 20px;
+	background-color: #F1F1F1;
+	width: 600px;
+	text-align: center;
+	margin: 15px auto;
+}
+
+.error-message {
+	background-color: #d9534f;
+	color: white;
+}
+
 /*
  | --------------------------------------------------
  | Global Header
@@ -261,48 +274,25 @@ select {
 .global-header {
 	width: 100%;
 	height: 60px;
+	text-align: center;
 	display: block;
 	background-color: #1686f4;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 	color: white;
 }
 
-.global-header ul {
-	width: 960px;
-	height: 60px;
-	margin: 0 auto;
-	list-style: none;
-	position: relative;
-	clear: both;
-}
-
-.global-header ul h1,
-.global-header li,
-.global-header a {
+.global-header h1 {
 	display: inline-block;
 	height: 60px;
+	padding: 0 20px;
 	line-height: 60px;
-}
-
-.global-header h1 {
 	font-weight: 200;
 	font-size: 28px;
-	margin-right: 20px;
 }
 
-.global-header h1 a,
-.global-header li a {
+.global-header h1 a {
 	text-decoration: none;
 	color: white;
-}
-
-.global-header li { vertical-align: top; }
-
-.global-header li a { padding: 0 15px; }
-
-.global-header li a:hover {
-	background-color: white;
-	color: #333;
 }
 
 /*
@@ -348,9 +338,9 @@ select {
 
 .global-sidebar h1 {
 	padding: 10px 15px;
-	border-bottom: 1px solid white;
-	font-size: 36px;
+	font-size: 28px;
 	font-weight: 200;
+	text-transform: uppercase;
 }
 
 .global-sidebar h1 a {

@@ -18,6 +18,8 @@ return array(
 	"Router"          => "Graphist\Routing\Router",
 	"Route"           => "Graphist\Routing\Route",
 
+	"Resource"        => "Graphist\Resource",
+
 	"Controller"      => "Graphist\Controller",
 	"BaseController"  => "Graphist\Controller\BaseController",
 	

@@ -29,6 +29,8 @@ $aliases = include("app/config/aliases.php");
 Graphist\Foundation\ClassLoader::register();
 Graphist\Foundation\AliasLoader::getInstance($aliases)->register();
 
+require "app/start.php";
+
 /*
  | ==============================================================
  | Load JSON configuration files

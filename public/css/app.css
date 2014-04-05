@@ -1,7 +1,11 @@
+.sign-in-wrapper header { text-align: center; }
+
 .sign-in-form {
-	width: 275px;
-	margin-top: 20px;
+	width: 300px;
+	margin: 20px auto 0;
 }
+
+.sign-in-form .blue-btn { width: 100%; }
 
 form ul { list-style: none; }
 
@@ -9,7 +13,7 @@ form li { margin-bottom: 10px; }
 
 form > button,
 form > a { 
-	display:block;
+	display: block;
 	margin-top: 10px;
 }
 
@@ -28,8 +32,6 @@ form > a {
 }
 
 .console-wrapper form { margin-top: 10px; }
-
-.console-wrapper p:first-of-type { font-weight: 300; }
 
 /*
  | --------------------------------------------------

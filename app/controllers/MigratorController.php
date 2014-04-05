@@ -1,8 +1,9 @@
 <?php
 
-class MigratorController extends BaseController {
-
-	public function actionIndex() {
-		View::render("migrator");
+class MigratorController
+{
+	public function index()
+	{
+		View::render("console.migrator");
 	}
 }

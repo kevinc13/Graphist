@@ -16,6 +16,7 @@ composer.lock
 *.java
 /tools/*
 *.log
+/api/*
 
 # Ignore tests
 /app/tests/*

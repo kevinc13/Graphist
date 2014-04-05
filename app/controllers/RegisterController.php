@@ -1,7 +1,7 @@
 <?php
 
-class RegisterController extends BaseController {
-
+class RegisterController
+{
 	public $restful = true;	
 
 	public function getIndex() 
@@ -14,5 +14,4 @@ class RegisterController extends BaseController {
 		$this->_vars = RegisterModel::load()->index();
 		View::render("register", $this->_vars);
 	}
-
 }

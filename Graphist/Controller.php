@@ -28,40 +28,36 @@ class Controller {
 		} 
 		else 
 		{
-			$controller->execute($method, $parameters);
+			static::execute($controller, $method, $parameters);
 		}
 	}
 
 	public static function resolve($controller) 
 	{
-		$model = $controller;
+		$model = str_replace("Controller", "", $controller);
 
 		if (!static::load($controller, $model)) return;
-
-		$controller = static::format($controller);
 
 		return new $controller;
 	}
 
-	public function execute($method, $parameters = array()) 
+	public static function execute($controller, $method, $parameters = array()) 
 	{
-		if ($this->restful) 
+		if (property_exists(get_class($controller), "restful") && $controller->restful) 
 		{
 			$action = strtolower(Request::method()) . ucfirst($method);
 		} 
 		else 
 		{
-			$action = "action" . ucfirst($method);
+			$action = $method;
 		}
 
-		call_user_func_array(array($this, $action), $parameters);
+		call_user_func_array(array($controller, $action), $parameters);
 	}
 
 	protected static function load($controller, $model) 
 	{
-		$controller = strtolower(str_replace('.', '/', $controller));
-
-		if (file_exists($controllerPath = "app/controllers/" . ucfirst($controller) . "Controller" . EXT)) 
+		if (file_exists($controllerPath = "app/controllers/" . $controller . EXT)) 
 		{
 			require_once $controllerPath;
 
@@ -72,13 +68,6 @@ class Controller {
 
 			return true;
 		}
-
 		return false;
 	}
-
-	protected static function format($controller) 
-	{
-		return ucfirst($controller) . "Controller";
-	}
-
 }

@@ -1,10 +1,10 @@
 <?php
 
-class ApiController extends BaseController {
-    
-    public function actionIndex($uri) {
+class ApiController
+{    
+    public function index($uri)
+    {
         $resourcePath = "api/" . $uri . EXT;
-        
         if (file_exists($resourcePath)) {
         
             require_once("api/lib/init.php");
@@ -12,8 +12,6 @@ class ApiController extends BaseController {
             require_once($resourcePath);     
         } else {
             Response::json(array("success" => "no", "message" => "Invalid resource"));
-        }
-        
-    }
-    
+        }   
+    }    
 }

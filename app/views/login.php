@@ -8,17 +8,12 @@
 </head>
 <body>
 	<section class="global-header">
-		<ul>
-			<h1>
-				<a href="<?php echo DOCUMENT_ROOT;?>">Graphist</a>
-			</h1>
-			<li>
-				<a href="SignUp">Sign Up</a>
-			</li>
-		</ul>
+		<h1>
+			<a href="<?php echo DOCUMENT_ROOT;?>">GRAPHIST</a>
+		</h1>
 	</section>
 	<!-- End Head Wrapper -->
-	<section class="content-wrapper">
+	<section class="content-wrapper sign-in-wrapper">
 		<header>Sign In</header>
 		<?php 
 			if ($_POST) 
@@ -32,17 +27,13 @@
 		<form action="SignIn" method="post" class="sign-in-form">
 			<ul>
 				<li>
-					<input type="text" name="email" placeholder="Email" value="<?php echo (isset($_POST['email']))? $_POST['email'] : "";?>" autofocus />
+					<input type="text" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']))? $_POST['username'] : "";?>" autofocus />
 				</li>
 				<li>	
 					<input type="password" name="password" placeholder="Password" />
 				</li>
 			</ul>
-			<footer>
-				<input type="checkbox" name="remember" />
-				<label>Remember me</label>
-				<input type="submit" class="btn blue-btn" name="login" value="Sign In" />
-			</footer>
+			<input type="submit" class="btn blue-btn" name="login" value="Sign In">
 		</form>
 	</section>
 	<!-- End Content Wrapper -->

@@ -1,1 +1,1 @@
-<h1><a href="<?php echo DOCUMENT_ROOT;?>console">Console</a></h1>
+<h1><a href="<?php echo DOCUMENT_ROOT;?>console">GRAPHIST</a></h1>

@@ -1,11 +1,10 @@
 <?php
 
-class IndexController extends BaseController {
-
-	public function actionIndex() 
+class IndexController
+{
+	public function index() 
 	{
 		Index::load()->index();
 		View::render("index");
 	}
-
 }

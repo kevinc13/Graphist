@@ -366,17 +366,18 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 	
 	ns.API.resources = {
 		"migrations": {
-			"get": "api/migrations/get"
+			"create": "api/v1/migrations",
+			"get": "api/v1/migrations"
 		},
 
 		"migration": {
-			"create": "api/migration/create",
-			"servers": "api/migration/servers",
-			"tables": "api/migration/tables",
-			"entities": "api/migration/entities",
-			"relationships": "api/migration/relationships",
-			"execute": "api/migration/execute",
-			"destroy": "api/migration/destroy"
+			"create": "api/v1/migration/{:id}/create",
+			"servers": "api/v1/migration/{:id}/servers",
+			"tables": "api/v1/migration/{:id}/tables",
+			"entities": "api/v1/migration/{:id}/entities",
+			"relationships": "api/v1/migration/{:id}/relationships",
+			"execute": "api/v1/migration/{:id}/execute",
+			"destroy": "api/v1/migration/{:id}/destroy"
 		}
 	};
 
@@ -386,6 +387,11 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 	 | ----------------------------------------------------------------------
 	 */
 	
+	var route = function(route, param)
+	{
+		return route.replace(/{:([A-Za-z0-9_-]+)}/g, param);
+	}
+
 	ns.API.functions = {};
 
 		/*
@@ -430,7 +436,7 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 			var d = new $.Deferred();
 
 			$.ajax({
-				url: ns.API.resources.migration.create,
+				url: ns.API.resources.migrations.create,
 				type: "POST",
 				data: {user_id: ns.globals.user.user_id},
 				dataType: "json",
@@ -453,7 +459,7 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 			var d = new $.Deferred();
 
 			$.ajax({
-				url: ns.API.resources.migration.servers,
+				url: route(ns.API.resources.migration.servers, data.migration_id),
 				type: "POST",
 				data: data,
 				dataType: "json",
@@ -476,7 +482,7 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 			var d = new $.Deferred();
 
 			$.ajax({
-				url: ns.API.resources.migration.tables + "?migration_id=" + ns.globals.migration.migration_id,
+				url: route(ns.API.resources.migration.tables, ns.globals.migration.migration_id),
 				type: "GET",
 				dataType: "json",
 				success: function(response) {
@@ -503,7 +509,7 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 			var d = new $.Deferred();
 
 			$.ajax({
-				url: ns.API.resources.migration.entities,
+				url: route(ns.API.resources.migration.entities, data.migration_id),
 				type: "POST",
 				data: data,
 				dataType: "json",
@@ -527,12 +533,11 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 			var d = new $.Deferred();
 
 			var requestDataObj = {};
-			requestDataObj.migration_id = ns.globals.migration.migration_id;
 			requestDataObj.user_id = ns.globals.user.user_id;
 			requestDataObj.relationships = JSON.stringify(data);
 
 			$.ajax({
-				url: ns.API.resources.migration.relationships,
+				url: route(ns.API.resources.migration.relationships, ns.globals.migration.migration_id),
 				type: "POST",
 				data: requestDataObj,
 				dataType: "json",
@@ -557,9 +562,9 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 			var d = new $.Deferred();
 
 			$.ajax({
-				url: ns.API.resources.migration.destroy,
+				url: route(ns.API.resources.migration.destroy, migrationId),
 				type: "POST",
-				data: {migration_id: migrationId, user_id: ns.globals.user.user_id},
+				data: {user_id: ns.globals.user.user_id},
 				dataType: "json",
 				success: function(response)
 				{
@@ -579,10 +584,9 @@ define(["jquery", "underscore", "backbone", "handlebars"], function() {
 			var d = new $.Deferred();
 
 			$.ajax({
-				url: ns.API.resources.migration.execute,
+				url: route(ns.API.resources.migration.execute, migrationId),
 				type: "POST",
 				data: {
-					migration_id: migrationId,
 					user_id: ns.globals.user.user_id,
 					produce_tsv: false
 				},

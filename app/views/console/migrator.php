@@ -11,6 +11,7 @@
 		<?php View::insert("sidebar_header");?>
 		<ul>
 			<li>
+				<a href="<?php echo DOCUMENT_ROOT;?>console/connections">Connections</a>
 				<a href="console/migrator" class="active">Migration Tool</a>
 			</li>
 		</ul>
@@ -93,7 +94,7 @@
 	<script>
 		require(["main"], function(Graphist)
 		{	
-			Graphist.globals.user = <?php print json_encode(array("user_id" => $_SESSION["user_id"], "email" => $_SESSION["email"])); ?>;
+			Graphist.globals.user = <?php print json_encode(array("user_id" => $_SESSION["user_id"], "username" => $_SESSION["username"])); ?>;
 
 			var all = $(".content-wrapper"),
 				start = $("#start"),

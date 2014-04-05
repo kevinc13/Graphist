@@ -4,7 +4,6 @@ class Login extends BaseModel {
 
 	private $_user_id;
 	private $_name;
-	private $_email;
 	private $_username;
 	private $_password;
 	private $_password_encrypted;
@@ -56,7 +55,7 @@ class Login extends BaseModel {
 
 		$this->_user_id      = 0;
 		$this->_name     = '';
-		$this->_email = ($this->_submit)? $this->filter($_POST["email"]) : $_SESSION["email"];
+		$this->_username = ($this->_submit)? $this->filter($_POST["username"]) : $_SESSION["username"];
 		$this->_password = ($this->_submit)? $this->filter($_POST["password"]) : "password";
 
 		if ($this->_submit) {
@@ -101,7 +100,7 @@ class Login extends BaseModel {
     	$graph = Graph::instance()->getClient();
 
     	$userLabel = $graph->makeLabel("User");
-    	$userNodes = $userLabel->getNodes("email", $this->_email);
+    	$userNodes = $userLabel->getNodes("username", $this->_username);
 
     	if (count($userNodes) > 0) {
 
@@ -127,7 +126,7 @@ class Login extends BaseModel {
     {
 		$_SESSION['user_id'] = $this->_user_id;
 		$_SESSION['name'] = $this->_name;
-		$_SESSION['email'] = $this->_email;
+		$_SESSION['username'] = $this->_username;
 		$_SESSION['password'] = $this->_password_encrypted;
 		$_SESSION["timezone"] = $this->_timezone;
     }

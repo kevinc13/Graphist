@@ -8,24 +8,32 @@
 
 /*
  | ---------------------------------------------------------------------- 
- | Index Route
+ | API v2 Routes
  | ----------------------------------------------------------------------
  */
-Route::any("/", "login");
+Route::post("/api/v1/migration/(:num)/servers", "MigrationController#setServers");
+Route::post("/api/v1/migration/(:num)/entities", "MigrationController#saveEntities");
+Route::post("/api/v1/migration/(:num)/relationships", "MigrationController#saveRelationships");
+Route::get("/api/v1/migration/(:num)/tables", "MigrationController#getTables");
+Route::post("/api/v1/migration/(:num)/destroy", "MigrationController#deleteMigration");
+
+Route::post("/api/v1/migrations", "MigrationsController#createMigration");
+Route::get("/api/v1/migrations", "MigrationsController#getMigrations");
 
 /*
  | ---------------------------------------------------------------------- 
- | API Route
+ | Index Route
  | ----------------------------------------------------------------------
  */
-Route::any("/api/(:all)", "api");
+Route::any("/", "LoginController");
 
-Route::any("/SignIn", "login");
-Route::any("/SignUp", "register");
+Route::any("/SignIn", "LoginController");
+Route::any("/SignUp", "RegisterController");
 
-Route::get("/console", "console");
-Route::get("/console/migrator", "migrator");
-Route::get("/console/migrator/(:all)", "migrator");
+Route::get("/console", "ConsoleController");
+Route::get("/console/connections", "ConnectionsController");
+Route::get("/console/migrator", "MigratorController");
+Route::get("/console/migrator/(:all)", "MigratorController");
 
 Route::get("/SignOut", function()
 {

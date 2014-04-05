@@ -109,6 +109,11 @@ class Response {
 		return $this;
 	}
 
+	public function getData()
+	{
+		return $this->data;
+	}
+
 	public function send()
 	{
 		print $this->data;

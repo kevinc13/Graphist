@@ -1,7 +1,7 @@
 <?php
 
-class LoginController extends BaseController {
-
+class LoginController
+{
 	public $restful = true;
 
 	public function getIndex() 
@@ -15,5 +15,4 @@ class LoginController extends BaseController {
 		$this->_vars = Login::load()->index();
 		View::render("login", $this->_vars);
 	}
-
 }
